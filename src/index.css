@@ -11,3 +11,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.fc-event {
+  width: 120px;
+}
+
+.fc-today-button {
+  display: none !important;
+}
+
+.fc-toolbar-chunk {
+  flex: 1;
+  text-align: center;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 17px;
+}
+
+.fc-v-event {
+  border: 1px solid transparent;
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+  display: block;
+  margin-left: 60px;
+}
+
+.input-container {
+  display: flex;
+  justify-content: flex-end;
+  margin: 30px;
+  padding-top: 20px;
+}
+
+.fc-button-group {
+  display: none !important;
+}
