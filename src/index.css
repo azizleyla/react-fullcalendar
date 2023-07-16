@@ -12,9 +12,7 @@ code {
     monospace;
 }
 
-.fc-event {
-  width: 120px;
-}
+
 
 .fc-today-button {
   display: none !important;
@@ -29,8 +27,13 @@ code {
   font-size: 17px;
 }
 
-.fc-v-event {
+.fc-h-event {
   border: 1px solid transparent;
+}
+
+.fc-event {
+  border-radius: 6px;
+  margin-bottom: 5px;
 }
 
 .fc .fc-toolbar.fc-header-toolbar {

@@ -1,14 +1,14 @@
 import FullCalendar from '@fullcalendar/react';
 import React, { useEffect, useRef, useState } from 'react';
-import timeGridPlugin from '@fullcalendar/timegrid'; // bir eklenti
 import moment from 'moment/moment';
+import resourceTimelinePlugin from '@fullcalendar/resource-timeline'
 
 const eventsList = [
     {
         title: 'Leyla Aziz',
         guestCount: 3,
         start: new Date(2023, 6, 15, 14, 30, 0),
-        end: new Date(2023, 6, 15, 16, 40, 0),
+        end: new Date(2023, 6, 15, 18, 0, 0),
         backgroundColor: 'green'
     },
     {
@@ -76,7 +76,6 @@ const TimePicker = () => {
         return (
             <div>
                 <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                    {formattedStart} - {formattedEnd}
                     <span> {arg.event.extendedProps.guestCount}</span>
                     {arg.event.title}
                 </div>
@@ -102,15 +101,17 @@ const TimePicker = () => {
                 eventClick={handleEventClick}
 
                 headerToolbar={{
-                    // Empty string to remove the left section of the header
-                    // Empty string to remove the center section of the header
-                    end: '', // Empty string to remove the right section of the header
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'resourceTimelineDay,resourceTimelineWeek,dayGridMonth,listWeek', // Use resourceTimeline views
+                    resourceAreaColumns: false, // Hide the resources section
                 }}
                 allDaySlot={false}
-                slotDuration="00:30:00"
-                plugins={[timeGridPlugin]}
-                initialView="timeGridDay"
-                events={events}
+
+                plugins={[resourceTimelinePlugin]}
+                initialView="resourceTimelineDay"
+                resources={events.map((event, index) => ({ id: index, title: event.title }))} // Each event is a resource representing a time slot
+                events={events.map((event, index) => ({ ...event, resourceId: index }))} // Each event is assigned to a resource based on its index
                 eventContent={eventContent}
 
             />
